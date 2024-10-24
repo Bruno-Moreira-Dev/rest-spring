@@ -2,8 +2,6 @@ package br.com.bruno.rest_spring.controller;
 
 import br.com.bruno.rest_spring.ProdutoService.ProdutoService;
 import br.com.bruno.rest_spring.entity.Produto;
-import br.com.bruno.rest_spring.exception.ProductNullException;
-import br.com.bruno.rest_spring.exception.ProductPriceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +16,7 @@ public class ProdutoController {
     private ProdutoService service;
 
     @PostMapping("/save")
-    public ResponseEntity<Produto> salvaProduto(@RequestBody Produto produto) throws ProductNullException, ProductPriceException {
+    public ResponseEntity<Produto> salvaProduto(@RequestBody Produto produto) {
         produto = service.save(produto);
         return ResponseEntity.ok().body(produto);
     }
